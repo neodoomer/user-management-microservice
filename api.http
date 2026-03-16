@@ -1,0 +1,54 @@
+### Health Check
+GET http://localhost/health
+
+### Sign Up
+POST http://localhost/api/v1/auth/signup
+Content-Type: application/json
+
+{
+  "email": "user@example.com",
+  "username": "newuser",
+  "password": "password123"
+}
+
+### Sign In
+POST http://localhost/api/v1/auth/signin
+Content-Type: application/json
+
+{
+  "email": "user@example.com",
+  "password": "password123"
+}
+
+### Forgot Password
+POST http://localhost/api/v1/auth/forgot-password
+Content-Type: application/json
+
+{
+  "email": "user@example.com"
+}
+
+### Reset Password (replace TOKEN with real token from server logs)
+POST http://localhost/api/v1/auth/reset-password
+Content-Type: application/json
+
+{
+  "token": "TOKEN",
+  "new_password": "newpassword123"
+}
+
+### Create User (admin only - replace TOKEN with a valid admin JWT)
+POST http://localhost/api/v1/users
+Content-Type: application/json
+Authorization: Bearer TOKEN
+
+{
+  "email": "created@example.com",
+  "username": "createduser",
+  "password": "password123",
+  "role": "user"
+}
+
+### List Users (admin only - replace TOKEN with a valid admin JWT)
+GET http://localhost/api/v1/users?page=1&limit=10
+Authorization: Bearer TOKEN
